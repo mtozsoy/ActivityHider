@@ -173,6 +173,16 @@ def is_admin():
 
 if __name__ == "__main__":
     if is_admin():
+        import win32event
+        import win32api
+        import winerror
+        
+        # Sadece TEK BİR kopyanın çalışmasına izin ver
+        mutex = win32event.CreateMutex(None, False, "ActivityHider_SingleInstance_Mutex")
+        if win32api.GetLastError() == winerror.ERROR_ALREADY_EXISTS:
+            print("[!] ActivityHider zaten çalışıyor! İkinci kopya kapatılıyor.")
+            sys.exit(0)
+            
         app = BossKeyOrchestrator()
         app.start_listening()
         # GUI'yi başlat
