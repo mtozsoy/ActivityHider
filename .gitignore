@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.crashdata/
+app_pool.json
+config.json
+settings.ini
