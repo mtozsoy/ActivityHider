@@ -14,7 +14,7 @@ class AIAppScanner:
             base_url="https://models.inference.ai.azure.com",
             api_key=token,
         )
-        self.model = "gpt-4o"
+        self.model = "gpt-4o-mini"
 
     def get_installed_apps(self):
         """Başlat menüsü ve masaüstü kısayollarını tarar"""

@@ -18,8 +18,8 @@ class DynamicProfiler:
             base_url="https://models.inference.ai.azure.com",
             api_key=token,
         )
-        # Hız ve mantık için gpt-4o kullanıyoruz
-        self.model = "gpt-4o"
+        # Hız ve mantık için gpt-4o-mini kullanıyoruz (Günlük limitlere takılmamak için)
+        self.model = "gpt-4o-mini"
         
         self.last_used_app = None
         self.consecutive_count = 0
