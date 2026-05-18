@@ -2,7 +2,7 @@ import sys
 import os
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                              QHBoxLayout, QLabel, QPushButton, QSystemTrayIcon, 
-                             QMenu, QFrame, QTabWidget, QSpinBox, QListWidget, QListWidgetItem, QFileDialog, QMessageBox)
+                             QMenu, QFrame, QTabWidget, QSpinBox, QListWidget, QListWidgetItem, QFileDialog, QMessageBox, QCheckBox)
 from PyQt6.QtGui import QIcon, QFont, QAction, QColor, QPainter, QPixmap
 from PyQt6.QtCore import Qt, QTimer, QThread, pyqtSignal, QSize
 import qdarkstyle
@@ -153,6 +153,14 @@ class ActivityHiderGUI(QMainWindow):
     def init_settings_tab(self):
         settings_layout = QVBoxLayout(self.settings_tab)
         
+        # Başlangıçta Çalıştırma (Startup) Ayarı
+        import startup_manager
+        self.startup_checkbox = QCheckBox("Windows açıldığında otomatik başlat (Sessizce)")
+        self.startup_checkbox.setChecked(startup_manager.is_startup_enabled())
+        self.startup_checkbox.stateChanged.connect(self.toggle_startup)
+        self.startup_checkbox.setStyleSheet("font-weight: bold; color: #4CAF50;")
+        settings_layout.addWidget(self.startup_checkbox)
+        
         # Limit ayarı
         limit_layout = QHBoxLayout()
         limit_label = QLabel("Aynı Kamuflajı Tekrar Kullanma Limiti:")
@@ -212,6 +220,19 @@ class ActivityHiderGUI(QMainWindow):
                         self.app_list.addItem(item)
         except Exception:
             pass
+
+    def toggle_startup(self, state):
+        import startup_manager
+        if state == 2: # Qt.CheckState.Checked
+            success, msg = startup_manager.enable_startup()
+            if not success:
+                QMessageBox.warning(self, "Hata", msg)
+                self.startup_checkbox.setChecked(False)
+        else:
+            success, msg = startup_manager.disable_startup()
+            if not success:
+                QMessageBox.warning(self, "Hata", msg)
+                self.startup_checkbox.setChecked(True)
 
     def start_ai_scan(self):
         self.scan_btn.setEnabled(False)
