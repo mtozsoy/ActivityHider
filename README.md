@@ -1,7 +1,8 @@
 <div align="center">
   <h1>🛡️ Activity Hider (AI-Powered Panic Button)</h1>
   <p>
-    <strong>A next-generation, context-aware panic button powered by GPT-4o-mini.</strong>
+    <strong>A next-generation, context-aware panic button powered by GPT-4o-mini.</strong><br>
+    <em>GPT-4o-mini destekli, bağlama duyarlı yeni nesil panik butonu.</em>
   </p>
   
   [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
@@ -10,68 +11,71 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
   <p>
-    Have you ever needed to instantly hide your screen when someone walks into the room? <br>
-    <i>Activity Hider doesn't just hide your game; it analyzes your context using AI and instantly brings up a completely unrelated, safe application to perfectly camouflage your activity!</i>
+    <a href="#english">English</a> | <a href="#türkçe">Türkçe</a>
   </p>
 </div>
 
 <hr>
 
-## ✨ Features
+<h2 id="english">🇬🇧 English</h2>
 
+Have you ever needed to instantly hide your screen when someone walks into the room? <br>
+<i>Activity Hider doesn't just hide your game; it analyzes your context using AI and instantly brings up a completely unrelated, safe application to perfectly camouflage your activity!</i>
+
+### ✨ Features
 - 🧠 **Context-Aware AI Decisions:** Powered by GitHub Models (GPT-4o-mini), the application analyzes what you are currently doing (e.g., gaming vs. coding) and instantly opens an app from the **opposite** category to provide the perfect alibi.
 - ⚡ **Lightning Fast Execution:** Minimizes all active windows in milliseconds and maximizes your "decoy" application seamlessly using low-level Win32 APIs.
 - 🕵️ **Silent Background Operation:** Lives entirely in your system tray without any annoying console windows. 
-- 🚀 **UAC-Bypass Auto Start:** Registers itself to Windows Task Scheduler with the highest privileges, ensuring it starts silently on boot without triggering UAC prompts, while retaining the ability to hook into elevated games (like Valorant or CS2).
-- 🎛️ **Modern GUI Settings:** A sleek, PyQt6-based dashboard to manage your camouflage app pool, run AI system scans to automatically find apps on your PC, and configure repeat limits to ensure the AI doesn't pick the same decoy twice.
+- 🚀 **UAC-Bypass Auto Start:** Registers itself to Windows Task Scheduler with the highest privileges, ensuring it starts silently on boot without triggering UAC prompts.
+- 🎛️ **Modern GUI Settings:** A sleek, PyQt6-based dashboard to manage your camouflage app pool, run AI system scans, and configure repeat limits.
 
-## 🛠️ Installation
-
-**1. Clone the repository:**
+### 🛠️ Installation
 ```bash
 git clone https://github.com/mtozsoy/ActivityHider.git
 cd ActivityHider
-```
-
-**2. Create a virtual environment & install dependencies:**
-```bash
 python -m venv .venv
-# Activate the venv (Windows PowerShell)
 .venv\Scripts\Activate.ps1
-
-# Install required packages
 pip install PyQt6 qdarkstyle openai pywin32 keyboard python-dotenv
 ```
-
-**3. Configure AI API Key:**
-This project relies on GitHub Models for AI inference. 
-- Get a free Personal Access Token from GitHub.
-- Create a `.env` file in the root directory.
-- Add your token:
+Create a `.env` file in the root directory and add your GitHub token:
 ```env
 GITHUB_TOKEN=ghp_your_personal_access_token_here
 ```
 
-## 🎮 Usage
+### 🎮 Usage
+Run `python main.py`. The app minimizes to your system tray. Double-click the tray icon to open settings and scan for apps. Press the **F12** hotkey anytime to trigger the panic sequence!
 
-1. Run the application:
+<hr>
+
+<h2 id="türkçe">🇹🇷 Türkçe</h2>
+
+Odaya biri girdiğinde ekranınızı anında gizlemeniz gerektiği oldu mu? <br>
+<i>Activity Hider sadece oyununuzu gizlemekle kalmaz; yapay zeka kullanarak o an ne yaptığınızı analiz eder ve etkinliğinizi mükemmel bir şekilde kamufle etmek için anında tamamen alakasız, masum bir uygulama açar!</i>
+
+### ✨ Özellikler
+- 🧠 **Yapay Zeka Destekli Kararlar:** GitHub Models (GPT-4o-mini) tarafından desteklenen sistem, o an ne yaptığınızı (ör. oyun oynamak vs. kod yazmak) analiz eder ve size mükemmel bir mazeret sağlamak için **tam zıttı** kategoriden bir uygulama açar.
+- ⚡ **Işık Hızında Çalışma:** Düşük seviye Win32 API'lerini kullanarak tüm aktif pencereleri milisaniyeler içinde simge durumuna küçültür ve "kamuflaj" uygulamanızı ekrana getirir.
+- 🕵️ **Sessiz Arka Plan İşlemi:** Can sıkıcı siyah CMD ekranları olmadan tamamen sağ alttaki sistem tepsisinde (system tray) yaşar.
+- 🚀 **UAC (Yönetici) Atlayarak Otomatik Başlatma:** Kendisini en yüksek ayrıcalıklarla Windows Görev Zamanlayıcısına kaydeder ve bilgisayar açılışında rahatsız edici "Evet/Hayır" uyarıları vermeden sessizce başlar.
+- 🎛️ **Modern Arayüz (GUI):** Kamuflaj havuzunuzu yönetmek, yapay zeka ile sistemi tarayıp otomatik liste oluşturmak ve tekrarlama limitlerini ayarlamak için PyQt6 tabanlı şık bir kontrol paneli.
+
+### 🛠️ Kurulum
 ```bash
-python main.py
+git clone https://github.com/mtozsoy/ActivityHider.git
+cd ActivityHider
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install PyQt6 qdarkstyle openai pywin32 keyboard python-dotenv
 ```
-*(Note: The app will request Administrator privileges if it doesn't already have them, as it needs to intercept hotkeys even when anti-cheat protected games are in focus).*
+Ana dizinde bir `.env` dosyası oluşturun ve GitHub API token'ınızı ekleyin:
+```env
+GITHUB_TOKEN=ghp_kisisel_erisim_anahtariniz_buraya
+```
 
-2. The application will minimize to your system tray (look for the red shield icon).
-3. **Double-click** the tray icon to open the GUI dashboard.
-4. **Settings Tab:** Click `[Yapay Zeka ile Sistemi Tara]` to automatically scan and categorize the software on your PC, building your camouflage arsenal.
-5. Hit the **Panic Hotkey (F12)** anytime, anywhere. Watch the magic happen!
+### 🎮 Kullanım
+`python main.py` komutuyla çalıştırın. Uygulama, sistem tepsisine simge durumuna küçülecektir. Ayarları açmak ve sisteminizdeki uygulamaları taratmak için tepsi simgesine (kalkan ikonu) çift tıklayın. Panik modunu tetiklemek için istediğiniz zaman **F12** tuşuna basmanız yeterlidir!
 
-## 🏗️ Architecture
-
-- `main.py`: Orchestrates the hotkey listening loop and executes the "Panic Sequence".
-- `ai_engine.py`: Polls the system every few seconds, analyzes the current active window, and queries GPT-4o-mini to prepare a contextually appropriate decoy application in advance.
-- `gui_app.py`: A multithreaded PyQt6 interface for configuration and live AI status monitoring.
-- `app_scanner.py`: Scans Windows start menu/desktop shortcuts and categorizes them automatically.
-- `startup_manager.py`: Interacts with Windows `schtasks` to manage silent logon startups.
+<hr>
 
 ## 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
